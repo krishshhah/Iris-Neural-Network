@@ -34,10 +34,11 @@ df.describe()
 # Create a model class to inherit the nn.Module
 
 class Model(nn.Module):
-  # input layer contains 4 inputs of the model
-  # 1st hidden layer (l1) will have 10 neurons
-  # 2nd hidden layer (l2) will have 10 neurons
-  # output layer has 3 neurons to pick a flower
+  # input layer contains 7 inputs of the model
+  # 1st hidden layer (l1) will have 20 neurons
+  # 2nd hidden layer (l2) will have 20 neurons
+  # 3rd hidden layer (l3) will have 20 neurons
+  # output layer has 3 neurons to pick a seed class
 
   def __init__(self, in_features=7, L1=20, L2=20, L3=20, out_features=3):
     super().__init__() # inherites from the superclass (nn.Module)
@@ -164,7 +165,7 @@ def testing(area, perimeter, compactness, kernel_length, kernel_width, asymmetry
     z = model(new_seed)
     z_quality = z.argmax().item()  # max index in tensor
     print(z)
-    print(f'Class guess is: {z_quality} => ({z_quality+1})')
+    print(f'Class guess is: {z_quality} => (Class: {z_quality+1})')
 
 
 testing(14.88, 14.57, 0.8811, 5.554, 3.333, 1.018, 4.956)
